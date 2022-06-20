@@ -20,7 +20,6 @@
         $user = $user->fetchAll(PDO::FETCH_OBJ);
 
         // PHONE NUMBER LESS THAN 9 DIGITS
-        echo "Número Passado ".$phone."<br>";
         if(strlen($phone) < 9){
             $_SESSION["created"] = 3;
             header("location:../register.php");
@@ -102,6 +101,7 @@
             }
             if($user_exists){
                 $_SESSION["user-email"] = $email;
+                $_SESSION["user-login"] = true;
                 $_SESSION["login"] = 0;
                 header("location:../home.php");
             }
