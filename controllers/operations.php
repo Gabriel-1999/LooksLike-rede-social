@@ -49,7 +49,7 @@
                     echo "Phone exists ".$phone_exists."<br>";
                   if($email_exists === false && $user_exists === false && $phone_exists === false){
                       $sql = "INSERT INTO USER (email, name, city,password, phone, birthday)
-                      VALUES ('".$email."','".$name."','".$city."','".$password."','".$phone."','".$birthday."')";
+                      VALUES ('".$email."','".$name."','".$city."','".md5($password)."','".$phone."','".$birthday."')";
                       if ($connection->query($sql)) {
                           //USER CREATED
                       $_SESSION["created"] = 0;
@@ -94,7 +94,7 @@
             $user_exists = false;
 
             foreach ($user as $user) {
-                if(strtoupper($user->EMAIL) === strtoupper($email) && strtoupper($user->PASSWORD) === strtoupper($password)){
+                if(strtoupper($user->EMAIL) === strtoupper($email) && $user->PASSWORD === md5($password)){
                     $user_exists = true;
                     break;
                 }

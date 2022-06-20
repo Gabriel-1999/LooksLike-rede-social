@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION["user-login"])){
+  header("Location: signIn.php");
+  die();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -54,7 +61,7 @@
       <div class="gradient"></div>
       <a href="./perfil.php" class="perfilCard">
         <img src="./assets/myPic.png" alt="" srcset="">
-        <h3>Silesio Cipriano</h3>
+        <h3><?php echo $_SESSION["user-email"]?></h3>
         <h4>Nampula</h4>
       </a>
     </section>

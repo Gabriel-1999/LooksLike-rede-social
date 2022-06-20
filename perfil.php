@@ -1,3 +1,10 @@
+<?php
+session_start();
+if(!isset($_SESSION["user-login"])){
+  header("Location: signIn.php");
+  die();
+}
+?>
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -54,7 +61,7 @@
       <a href="./perfil.php" class="perfilCard">
         <img src="./assets/myPic.png" alt="" srcset="">
         <h4>20</h4>
-        <h3>Silesio Cipriano</h3>
+        <h3><?php echo $_SESSION["user-email"]?></h3>
         <h4>Nampula</h4>
         <hr/>
         <h4>scipriano@gmail.com</h4>
